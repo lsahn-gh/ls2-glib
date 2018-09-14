@@ -58,7 +58,7 @@ glus2_g_main_attach (Glus2Handle    *self,
 
     ctx = g_main_loop_get_context (mainloop);
 
-    return glus2_g_main_context_attach (self, ctx);
+    return glus2_g_main_attach_with_context (self, ctx);
 }
 
 gboolean
@@ -70,7 +70,7 @@ glus2_g_main_attach_with_default_context (Glus2Handle *self)
     
     ctx = g_main_context_default ();
 
-    return glus2_g_main_context_attach (self, ctx);
+    return glus2_g_main_attach_with_context (self, ctx);
 }
 
 gboolean
