@@ -17,7 +17,7 @@
 #include <glus2/glus2.h>
 
 #define     GLUS2_SMALL_PADDING     2
-#define     GLUS2_PADDING           4
+#define     GLUS2_PADDING           8
 
 struct _Glus2Handle
 {
