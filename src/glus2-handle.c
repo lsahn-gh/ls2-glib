@@ -21,12 +21,10 @@
 
 struct _Glus2Handle
 {
+    /* Private */
     GObject     parent;
 
-    /* Private */
     Glus2HandlePrivate *priv;
-
-    gpointer _reserved[GLUS2_SMALL_PADDING];
 };
 
 struct _Glus2HandleClass
