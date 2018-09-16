@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-#include <glus2/glus2.h>
+#include <gls2/gls2.h>
 
 gboolean
-glus2_call_add_cancel_notification (Glus2Handle                 *self,
-                                    LSCancelNotificationFunc    fptr,
-                                    gpointer                    user_data)
+gls2_call_add_cancel_notification (Gls2Handle                  *self,
+                                   LSCancelNotificationFunc    fptr,
+                                   gpointer                    user_data)
 {
-    Glus2HandlePrivate *priv;
+    Gls2HandlePrivate *priv;
     gboolean ret;
 
-    glus2_ret_false_if_fail_autodef (self, priv);
+    gls2_ret_false_if_fail_autodef (self, priv);
 
     ret = LSCallCancelNotificationAdd (priv->handler,
                                        fptr,
@@ -32,20 +32,20 @@ glus2_call_add_cancel_notification (Glus2Handle                 *self,
                                        priv->lserror);
 
     if (!ret)
-        glus2_err_log_if_set (priv->lserror);
+        gls2_err_log_if_set (priv->lserror);
 
     return ret;
 }
 
 gboolean
-glus2_call_remove_cancel_notification (Glus2Handle              *self,
-                                       LSCancelNotificationFunc fptr,
-                                       gpointer                 user_data)
+gls2_call_remove_cancel_notification (Gls2Handle               *self,
+                                      LSCancelNotificationFunc fptr,
+                                      gpointer                 user_data)
 {
-    Glus2HandlePrivate *priv;
+    Gls2HandlePrivate *priv;
     gboolean ret;
 
-    glus2_ret_false_if_fail_autodef (self, priv);
+    gls2_ret_false_if_fail_autodef (self, priv);
 
     ret = LSCallCancelNotificationRemove (priv->handler,
                                           fptr,
@@ -53,24 +53,24 @@ glus2_call_remove_cancel_notification (Glus2Handle              *self,
                                           priv->lserror);
 
     if (!ret)
-        glus2_err_log_if_set (priv->lserror);
+        gls2_err_log_if_set (priv->lserror);
 
     return ret;
 }
 
 gboolean
-glus2_call (Glus2Handle     *self,
-            const gchar     *uri,
-            const gchar     *payload,
-            LSFilterFunc    callback,
-            gpointer        user_data,
-            LSMessageToken  *ret_token,
-            gboolean        one_reply)
+gls2_call (Gls2Handle      *self,
+           const gchar     *uri,
+           const gchar     *payload,
+           LSFilterFunc    callback,
+           gpointer        user_data,
+           LSMessageToken  *ret_token,
+           gboolean        one_reply)
 {
-    Glus2HandlePrivate *priv;
+    Gls2HandlePrivate *priv;
     gboolean ret;
 
-    glus2_ret_false_if_fail_autodef (self, priv);
+    gls2_ret_false_if_fail_autodef (self, priv);
 
     if (one_reply) {
         ret = LSCallOneReply (priv->handler,
@@ -91,25 +91,25 @@ glus2_call (Glus2Handle     *self,
     }
     
     if (!ret)
-        glus2_err_log_if_set (priv->lserror);
+        gls2_err_log_if_set (priv->lserror);
 
     return ret;
 }
 
 gboolean
-glus2_call_from_application (Glus2Handle        *self,
-                             const gchar        *uri,
-                             const gchar        *payload,
-                             const gchar        *app_id,
-                             LSFilterFunc       callback,
-                             gpointer           user_data,
-                             LSMessageToken     *ret_token,
-                             gboolean           one_reply)
+gls2_call_from_application (Gls2Handle         *self,
+                            const gchar        *uri,
+                            const gchar        *payload,
+                            const gchar        *app_id,
+                            LSFilterFunc       callback,
+                            gpointer           user_data,
+                            LSMessageToken     *ret_token,
+                            gboolean           one_reply)
 {
-    Glus2HandlePrivate *priv;
+    Gls2HandlePrivate *priv;
     gboolean ret;
 
-    glus2_ret_false_if_fail_autodef (self, priv);
+    gls2_ret_false_if_fail_autodef (self, priv);
 
     if (one_reply) {
         ret = LSCallFromApplicationOneReply (priv->handler,
@@ -132,35 +132,35 @@ glus2_call_from_application (Glus2Handle        *self,
     }
 
     if (!ret)
-        glus2_err_log_if_set (priv->lserror);
+        gls2_err_log_if_set (priv->lserror);
 
     return ret;
 }
 
 gboolean
-glus2_call_cancel (Glus2Handle      *self,
-                   LSMessageToken   token)
+gls2_call_cancel (Gls2Handle       *self,
+                  LSMessageToken   token)
 {
-    Glus2HandlePrivate *priv;
+    Gls2HandlePrivate *priv;
     gboolean ret;
 
-    glus2_ret_false_if_fail_autodef (self, priv);
+    gls2_ret_false_if_fail_autodef (self, priv);
 
     if ( !(ret = LSCallCancel (priv->handler, token, priv->lserror)) )
-        glus2_err_log_if_set (priv->lserror);
+        gls2_err_log_if_set (priv->lserror);
 
     return ret;
 }
 
 gboolean
-glus2_call_set_timeout (Glus2Handle     *self,
-                        LSMessageToken  token,
-                        gint            timeout_ms)
+gls2_call_set_timeout (Gls2Handle      *self,
+                       LSMessageToken  token,
+                       gint            timeout_ms)
 {
-    Glus2HandlePrivate *priv;
+    Gls2HandlePrivate *priv;
     gboolean ret;
 
-    glus2_ret_false_if_fail_autodef (self, priv);
+    gls2_ret_false_if_fail_autodef (self, priv);
 
     ret = LSCallSetTimeout (priv->handler,
                             token,
@@ -168,23 +168,23 @@ glus2_call_set_timeout (Glus2Handle     *self,
                             priv->lserror);
 
     if (!ret)
-        glus2_err_log_if_set (priv->lserror);
+        gls2_err_log_if_set (priv->lserror);
 
     return ret;
 }
 
 gboolean
-glus2_call_set_timeout_seconds (Glus2Handle       *self,
-                                LSMessageToken    token,
-                                gint              timeout_sec)
+gls2_call_set_timeout_seconds (Gls2Handle        *self,
+                               LSMessageToken    token,
+                               gint              timeout_sec)
 {
-    return glus2_call_set_timeout (self, token, timeout_sec * 1000);
+    return gls2_call_set_timeout (self, token, timeout_sec * 1000);
 }
 
 gboolean
-glus2_call_set_timeout_minutes (Glus2Handle       *self,
-                                LSMessageToken    token,
-                                gint              timeout_min)
+gls2_call_set_timeout_minutes (Gls2Handle        *self,
+                               LSMessageToken    token,
+                               gint              timeout_min)
 {
-    return glus2_call_set_timeout (self, token, timeout_min * 1000 * 60);
+    return gls2_call_set_timeout (self, token, timeout_min * 1000 * 60);
 }

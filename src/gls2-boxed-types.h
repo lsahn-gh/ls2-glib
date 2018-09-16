@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-#ifndef GLUS2_BOXED_TYPES_H
-#define GLUS2_BOXED_TYPES_H
+#ifndef GLS2_BOXED_TYPES_H
+#define GLS2_BOXED_TYPES_H
 
-#if !defined (__GLUS2_HEADER_INCLUDE__) && !defined (GLUS2_COMPILATION)
-#   error "Only <glus2.h> can be included directly!"
+#if !defined (__GLS2_HEADER_INCLUDE__) && !defined (GLS2_COMPILATION)
+#   error "Only <gls2/gls2.h> can be included directly!"
 #endif
 
 #include <glib.h>
@@ -29,17 +29,17 @@ G_BEGIN_DECLS
  * DO NOT use boxed-LSHandle unless you know how it works exactly.
  * There could be memory leak issues.
  */
-#define     GLUS2_TYPE_LSHANDLE          (glus2_lshandle_get_type ())
-GType       glus2_lshandle_get_type      (void);
+#define     GLS2_TYPE_LSHANDLE          (gls2_lshandle_get_type ())
+GType       gls2_lshandle_get_type      (void);
 
-#define     GLUS2_TYPE_LSMETHOD          (glus2_lsmethod_get_type ())
-GType       glus2_lsmethod_get_type      (void);
+#define     GLS2_TYPE_LSMETHOD          (gls2_lsmethod_get_type ())
+GType       gls2_lsmethod_get_type      (void);
 
-#define     GLUS2_TYPE_LSSIGNAL          (glus2_lssignal_get_type ())
-GType       glus2_lssignal_get_type      (void);
+#define     GLS2_TYPE_LSSIGNAL          (gls2_lssignal_get_type ())
+GType       gls2_lssignal_get_type      (void);
 
-#define     GLUS2_TYPE_LSPROPERTY        (glus2_lsproperty_get_type ())
-GType       glus2_lsproperty_get_type    (void);
+#define     GLS2_TYPE_LSPROPERTY        (gls2_lsproperty_get_type ())
+GType       gls2_lsproperty_get_type    (void);
 
 G_END_DECLS
 

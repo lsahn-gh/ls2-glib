@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-#include <glus2/glus2.h>
+#include <gls2/gls2.h>
 
 gboolean
-glus2_message_respond (LSMessage    *msg,
-                       const gchar  *reply)
+gls2_message_respond (LSMessage    *msg,
+                      const gchar  *reply)
 {
     LSError error;
     gboolean ret;
@@ -26,14 +26,14 @@ glus2_message_respond (LSMessage    *msg,
     LSErrorInit (&error);
 
     if ( !(ret = LSMessageRespond (msg, reply, &error)) )
-        glus2_err_log_if_set (&error);
+        gls2_err_log_if_set (&error);
 
     return ret;
 }
 
 gboolean
-glus2_message_respond_with_payload (LSMessage   *msg,
-                                    LSPayload   *payload)
+gls2_message_respond_with_payload (LSMessage   *msg,
+                                   LSPayload   *payload)
 {
     LSError error;
     gboolean ret;
@@ -41,30 +41,30 @@ glus2_message_respond_with_payload (LSMessage   *msg,
     LSErrorInit (&error);
 
     if ( !(ret = LSMessageRespondWithPayload (msg, payload, &error)) )
-        glus2_err_log_if_set (&error);
+        gls2_err_log_if_set (&error);
 
     return ret;
 }
 
 gboolean
-glus2_message_reply (Glus2Handle    *self,
-                     LSMessage      *msg,
-                     const gchar    *reply)
+gls2_message_reply (Gls2Handle     *self,
+                    LSMessage      *msg,
+                    const gchar    *reply)
 {
-    Glus2HandlePrivate *priv;
+    Gls2HandlePrivate *priv;
     gboolean ret;
 
-    glus2_ret_false_if_fail_autodef (self, priv);
+    gls2_ret_false_if_fail_autodef (self, priv);
 
     if ( !(ret = LSMessageReply (priv->handler, msg, reply, priv->lserror)) )
-        glus2_err_log_if_set (priv->lserror);
+        gls2_err_log_if_set (priv->lserror);
 
     return ret;
 }
 
 gboolean
-glus2_message_reply_err_bad_json (Glus2Handle   *self,
-                                  LSMessage     *msg)
+gls2_message_reply_err_bad_json (Gls2Handle    *self,
+                                 LSMessage     *msg)
 {
     gboolean ret;
 
@@ -74,12 +74,12 @@ glus2_message_reply_err_bad_json (Glus2Handle   *self,
             \"errorText\"  : \"Malformed json.\"    \
         }";
 
-    return glus2_message_reply (self, msg, reply);
+    return gls2_message_reply (self, msg, reply);
 }
 
 gboolean
-glus2_message_reply_err_invalid_params (Glus2Handle     *self,
-                                        LSMessage       *msg)
+gls2_message_reply_err_invalid_params (Gls2Handle      *self,
+                                       LSMessage       *msg)
 {
     gboolean ret;
 
@@ -89,18 +89,18 @@ glus2_message_reply_err_invalid_params (Glus2Handle     *self,
             \"errorText\"  : \"Invalid parameters.\"  \
         }";
 
-    return glus2_message_reply (self, msg, reply);
+    return gls2_message_reply (self, msg, reply);
 }
 
 gboolean
-glus2_message_reply_success (Glus2Handle        *self,
-                             LSMessage          *msg,
-                             const gchar        *payload)
+gls2_message_reply_success (Gls2Handle         *self,
+                            LSMessage          *msg,
+                            const gchar        *payload)
 {
-    Glus2HandlePrivate *priv;
+    Gls2HandlePrivate *priv;
     gboolean ret;
 
-    glus2_ret_false_if_fail_autodef (self, priv);
+    gls2_ret_false_if_fail_autodef (self, priv);
 
     if (payload == NULL) {
         ret = LSMessageReply (priv->handler,
@@ -115,7 +115,7 @@ glus2_message_reply_success (Glus2Handle        *self,
     }
 
     if (!ret)
-        glus2_err_log_if_set (priv->lserror);
+        gls2_err_log_if_set (priv->lserror);
 
     return ret;
 }

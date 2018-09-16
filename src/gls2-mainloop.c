@@ -14,94 +14,94 @@
  * limitations under the License.
  */
 
-#include <glus2/glus2.h>
+#include <gls2/gls2.h>
 
 GMainContext *
-glus2_g_main_get_context (Glus2Handle   *self)
+gls2_g_main_get_context (Gls2Handle   *self)
 {
-    Glus2HandlePrivate *priv;
+    Gls2HandlePrivate *priv;
     GMainContext *ctx;
 
-    glus2_ret_null_if_fail_autodef (self, priv);
+    gls2_ret_null_if_fail_autodef (self, priv);
 
     if ( (ctx = LSGmainGetContext (priv->handler, priv-lserror)) == NULL )
-        glus2_err_log_if_set (priv->lserror);
+        gls2_err_log_if_set (priv->lserror);
 
     return ctx;
 }
 
 gboolean
-glus2_g_main_attach_with_context (Glus2Handle    *self,
-                                  GMainContext   *ctx)
+gls2_g_main_attach_with_context (Gls2Handle     *self,
+                                 GMainContext   *ctx)
 {
-    Glus2HandlePrivate *priv;
+    Gls2HandlePrivate *priv;
     gboolean ret;
 
-    glus2_ret_false_if_fail_autodef (self, priv);
+    gls2_ret_false_if_fail_autodef (self, priv);
 
     ret = LSGmainContextAttach (priv->handler, ctx, priv->lserror);
 
     if (!ret)
-        glus2_err_log_if_set (priv->lserror);
+        gls2_err_log_if_set (priv->lserror);
 
     return ret;
 }
 
 gboolean
-glus2_g_main_attach (Glus2Handle    *self,
-                     GMainLoop      *mainloop)
+gls2_g_main_attach (Gls2Handle     *self,
+                    GMainLoop      *mainloop)
 {
     GMainContext *ctx;
 
-    glus2_ret_false_if_fail (self != NULL);
-    glus2_ret_false_if_fail (mainloop != NULL);
+    gls2_ret_false_if_fail (self != NULL);
+    gls2_ret_false_if_fail (mainloop != NULL);
 
     ctx = g_main_loop_get_context (mainloop);
 
-    return glus2_g_main_attach_with_context (self, ctx);
+    return gls2_g_main_attach_with_context (self, ctx);
 }
 
 gboolean
-glus2_g_main_attach_with_default_context (Glus2Handle *self)
+gls2_g_main_attach_with_default_context (Gls2Handle *self)
 {
     GMainContext *ctx;
 
-    glus2_ret_false_if_fail (self != NULL);
+    gls2_ret_false_if_fail (self != NULL);
     
     ctx = g_main_context_default ();
 
-    return glus2_g_main_attach_with_context (self, ctx);
+    return gls2_g_main_attach_with_context (self, ctx);
 }
 
 gboolean
-glus2_g_main_detach (Glus2Handle *self)
+gls2_g_main_detach (Gls2Handle *self)
 {
-    Glus2HandlePrivate *priv;
+    Gls2HandlePrivate *priv;
     gboolean ret;
 
-    glus2_ret_false_if_fail_autodef (self, priv);
+    gls2_ret_false_if_fail_autodef (self, priv);
 
     if ( !(ret = LSGmainDetach (priv->handler, priv->lserror)) )
-        glus2_err_log_if_set (priv->lserror);
+        gls2_err_log_if_set (priv->lserror);
 
     return ret;
 }
 
 gboolean
-glus2_g_main_set_priority (Glus2Handle  *self,
-                           gint         priority)
+gls2_g_main_set_priority (Gls2Handle   *self,
+                          gint         priority)
 {
-    Glus2HandlePrivate *priv;
+    Gls2HandlePrivate *priv;
     gboolean ret;
 
-    glus2_ret_false_if_fail_autodef (self, priv);
+    gls2_ret_false_if_fail_autodef (self, priv);
 
     ret = LSGmainSetPriority (priv->handler,
                               priority,
                               priv->lserror);
 
     if (!ret)
-        glus2_err_log_if_set (priv->lserror);
+        gls2_err_log_if_set (priv->lserror);
 
     return ret;
 }

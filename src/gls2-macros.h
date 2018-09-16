@@ -14,41 +14,40 @@
  * limitations under the License.
  */
 
-#ifndef GLUS2_MACROS_H
-#define GLUS2_MACROS_H
+#ifndef GLS2_MACROS_H
+#define GLS2_MACROS_H
 
-#if !defined (__GLUS2_HEADER_INCLUDE__) && !defined (GLUS2_COMPILATION)
-#   error "Only <glus2.h> can be included directly!"
+#if !defined (__GLS2_HEADER_INCLUDE__) && !defined (GLS2_COMPILATION)
+#   error "Only <gls2/gls2.h> can be included directly!"
 #endif
 
 #include <glib.h>
 
 G_BEGIN_DECLS
 
-/* Used for GApplication and Luna-Service2 */
-#define LIBRARY_ID              "glus2"
+#define LIBRARY_ID              "gls2"
 
 #define PMLOG_CONTEXT_NAME      LIBRARY_ID
 #define ERROR_MESSAGE_ID        LIBRARY_ID
 
-#define NONE    (void)0         /* Its type is void */
+#define NONE    (void)0
 
 /* --- Useful macros --- */
-#define     glus2_ret_false_if_fail(expr)      g_return_val_if_fail(expr, FALSE)
-#define     glus2_ret_null_if_fail(expr)       g_return_val_if_fail(expr, NULL)
+#define     gls2_ret_false_if_fail(expr)      g_return_val_if_fail(expr, FALSE)
+#define     gls2_ret_null_if_fail(expr)       g_return_val_if_fail(expr, NULL)
 
-#define     glus2_ret_val_if_fail_autodef(_self, _privptr, _val) \
+#define     gls2_ret_val_if_fail_autodef(_self, _privptr, _val) \
                 do { \
-                    g_return_val_if_fail (GLUS2_IS_HANDLE (_self), _val); \
+                    g_return_val_if_fail (GLS2_IS_HANDLE (_self), _val); \
                     _privptr = _self->priv; \
                     g_return_val_if_fail (_self->handler != NULL, _val); \
                 } while(FALSE)
 
-#define     glus2_ret_false_if_fail_autodef(_self, _privptr) \
-                glus2_ret_val_if_fail_autodef(_self, _privptr, FALSE)
+#define     gls2_ret_false_if_fail_autodef(_self, _privptr) \
+                gls2_ret_val_if_fail_autodef(_self, _privptr, FALSE)
 
-#define     glus2_ret_null_if_fail_autodef(_self, _privptr) \
-                glus2_ret_val_if_fail_autodef(_self, _privptr, NULL)
+#define     gls2_ret_null_if_fail_autodef(_self, _privptr) \
+                gls2_ret_val_if_fail_autodef(_self, _privptr, NULL)
 
 G_END_DECLS
 

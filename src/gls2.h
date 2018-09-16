@@ -14,16 +14,25 @@
  * limitations under the License.
  */
 
-#include "glus2-log.h"
-#include "glus2-macros.h"
+#ifndef GLS2_MAIN_H
+#define GLS2_MAIN_H
 
-PmLogContext
-glus2_pmlog_get_context (void)
-{
-    static PmLogContext pmlog_context = NULL;
+#define __GLS2_HEADER_INCLUDE__
 
-    if (pmlog_context == NULL)
-        PmLogGetContext (PMLOG_CONTEXT_NAME, &pmlog_context);
+#include <glib.h>
+#include <luna-service2/lunaservice.h>
 
-    return pmlog_context;
-}
+#include "gls2-boxed-types.h"
+#include "gls2-call.h"
+#include "gls2-general.h"
+#include "gls2-handle.h"
+#include "gls2-log.h"
+#include "gls2-macros.h"
+#include "gls2-mainloop.h"
+#include "gls2-message.h"
+#include "gls2-signal.h"
+#include "gls2-subscription.h"
+
+#undef __GLS2_HEADER_INCLUDE__
+
+#endif

@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-#include <glus2/glus2.h>
+#include <gls2/gls2.h>
 
 gboolean
-glus2_set_disconnect_handler (Glus2Handle           *self,
-                              LSDisconnectHandler   fptr,
-                              gpointer              user_data)
+gls2_set_disconnect_handler (Gls2Handle            *self,
+                             LSDisconnectHandler   fptr,
+                             gpointer              user_data)
 {
-    Glus2HandlePrivate *priv;
+    Gls2HandlePrivate *priv;
     gboolean ret;
 
-    glus2_ret_false_if_fail_autodef (self, priv);
+    gls2_ret_false_if_fail_autodef (self, priv);
 
     ret = LSSetDisconnectHandler (priv->handler,
                                   fptr,
@@ -32,7 +32,7 @@ glus2_set_disconnect_handler (Glus2Handle           *self,
                                   priv->lserror);
 
     if (!ret)
-        glus2_err_log_if_set (priv->lserror);
+        gls2_err_log_if_set (priv->lserror);
 
     return ret;
 }
@@ -40,7 +40,7 @@ glus2_set_disconnect_handler (Glus2Handle           *self,
 /*!
  * @brief Register category to Handle
  * 
- * @param  self: Glus2Handle instance
+ * @param  self: Gls2Handle instance
  * @param  category: See Handle docs
  * @param  methods: See Handle docs
  * @param  signals: See Handle docs
@@ -48,16 +48,16 @@ glus2_set_disconnect_handler (Glus2Handle           *self,
  * @return True on success, otherwise failure
  */
 gboolean
-glus2_register_category (Glus2Handle    *self,
-                         const gchar    *category,
-                         LSMethod       *methods,
-                         LSSignal       *signals,
-                         LSProperty     *properties)
+gls2_register_category (Gls2Handle     *self,
+                        const gchar    *category,
+                        LSMethod       *methods,
+                        LSSignal       *signals,
+                        LSProperty     *properties)
 {
-    Glus2HandlePrivate *priv;
+    Gls2HandlePrivate *priv;
     gboolean ret;
 
-    glus2_ret_false_if_fail_autodef (self, priv);
+    gls2_ret_false_if_fail_autodef (self, priv);
 
     ret = LSRegisterCategory (priv->handler,
                               category,
@@ -67,21 +67,21 @@ glus2_register_category (Glus2Handle    *self,
                               priv->lserror);
 
     if (!ret)
-        glus2_err_log_if_set (priv->lserror);
+        gls2_err_log_if_set (priv->lserror);
 
     return ret;
 }
 
 gboolean
-glus2_register_category_append (Glus2Handle    *self,
-                                const gchar    *category,
-                                LSMethod       *methods,
-                                LSSignal       *signals)
+gls2_register_category_append (Gls2Handle     *self,
+                               const gchar    *category,
+                               LSMethod       *methods,
+                               LSSignal       *signals)
 {
-    Glus2HandlePrivate *priv;
+    Gls2HandlePrivate *priv;
     gboolean ret;
 
-    glus2_ret_false_if_fail_autodef (self, priv);
+    gls2_ret_false_if_fail_autodef (self, priv);
 
     ret = LSRegisterCategoryAppend (priv->handler,
                                     category,
@@ -90,7 +90,7 @@ glus2_register_category_append (Glus2Handle    *self,
                                     priv->lserror);
 
     if (!ret)
-        glus2_err_log_if_set (priv->lserror);
+        gls2_err_log_if_set (priv->lserror);
 
     return ret;
 }
@@ -98,20 +98,20 @@ glus2_register_category_append (Glus2Handle    *self,
 /*!
  * @brief Set a data to the category
  * 
- * @param  self: Glus2Handle instance
+ * @param  self: Gls2Handle instance
  * @param  category: See Handle docs
  * @param  user_data: See Handle docs
  * @return True on success, otherwise failure
  */
 gboolean
-glus2_category_set_data (Glus2Handle     *self,
-                         const gchar     *category,
-                         gpointer        user_data)
+gls2_category_set_data (Gls2Handle      *self,
+                        const gchar     *category,
+                        gpointer        user_data)
 {
-    Glus2HandlePrivate *priv;
+    Gls2HandlePrivate *priv;
     gboolean ret;
 
-    glus2_ret_false_if_fail_autodef (self, priv);
+    gls2_ret_false_if_fail_autodef (self, priv);
 
     ret = LSCategorySetData (priv->handler,
                              category,
@@ -119,21 +119,21 @@ glus2_category_set_data (Glus2Handle     *self,
                              priv->lserror);
 
     if (!ret)
-        glus2_err_log_if_set (priv->lserror);
+        gls2_err_log_if_set (priv->lserror);
 
     return ret;
 }
 
 gboolean
-glus2_method_set_data (Glus2Handle      *self,
-                       const gchar      *category,
-                       const gchar      *method,
-                       gpointer         user_data)
+gls2_method_set_data (Gls2Handle       *self,
+                      const gchar      *category,
+                      const gchar      *method,
+                      gpointer         user_data)
 {
-    Glus2HandlePrivate *priv;
+    Gls2HandlePrivate *priv;
     gboolean ret;
 
-    glus2_ret_false_if_fail_autodef (self, priv);
+    gls2_ret_false_if_fail_autodef (self, priv);
 
     ret = LSCategorySetData (priv->handler,
                              category,
@@ -141,7 +141,7 @@ glus2_method_set_data (Glus2Handle      *self,
                              priv->lserror);
 
     if (!ret)
-        glus2_err_log_if_set (priv->lserror);
+        gls2_err_log_if_set (priv->lserror);
 
     return ret;
 }

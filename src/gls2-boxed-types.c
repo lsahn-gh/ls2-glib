@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include <glus2/glus2.h>
+#include <gls2/gls2.h>
 #include <string.h>
 
 /* --- LSHandle --- */
@@ -27,7 +27,7 @@
  * @return A pointer to shallow-copied LSHandle or NULL on failure.
  */
 static LSHandle *
-glus2_lshandle_copy (gpointer data)
+gls2_lshandle_copy (gpointer data)
 {
     LSHandle *lshandler;
     LSHandle *shallow_copy;
@@ -50,7 +50,7 @@ glus2_lshandle_copy (gpointer data)
 }
 
 static void
-glus2_lshandle_free (gpointer data)
+gls2_lshandle_free (gpointer data)
 {
     LSErorr error;
     LSHandle *lshandler;
@@ -69,7 +69,7 @@ glus2_lshandle_free (gpointer data)
     g_free (lshandler);
 }
 
-G_DEFINE_BOXED_TYPE (LSHandle, glus2_lshandle, glus2_handle_copy, glus2_handle_free)
+G_DEFINE_BOXED_TYPE (LSHandle, gls2_lshandle, gls2_handle_copy, gls2_handle_free)
 
 
 /* --- LSMethod --- */
@@ -79,7 +79,7 @@ G_DEFINE_BOXED_TYPE (LSHandle, glus2_lshandle, glus2_handle_copy, glus2_handle_f
  * @return A pointer to deep-copied LSMethod or NULL on failure.
  */
 static LSMethod *
-glus2_lsmethod_copy (gpointer data)
+gls2_lsmethod_copy (gpointer data)
 {
     LSMethod *lsmethod;
     LSMethod *deep_copy;
@@ -99,7 +99,7 @@ glus2_lsmethod_copy (gpointer data)
 }
 
 static void
-glus2_lsmethod_free (gpointer data)
+gls2_lsmethod_free (gpointer data)
 {
     LSMethod *lsmethod;
 
@@ -111,7 +111,7 @@ glus2_lsmethod_free (gpointer data)
     g_free (lsmethod);
 }
 
-G_DEFINE_BOXED_TYPE (LSMethod, glus2_lsmethod, glus2_lsmethod_copy, glus2_lsmethod_free)
+G_DEFINE_BOXED_TYPE (LSMethod, gls2_lsmethod, gls2_lsmethod_copy, gls2_lsmethod_free)
 
 
 /* --- LSSignal --- */
@@ -121,7 +121,7 @@ G_DEFINE_BOXED_TYPE (LSMethod, glus2_lsmethod, glus2_lsmethod_copy, glus2_lsmeth
  * @return A pointer to deep-copied LSSignal or NULL on failure.
  */
 static LSSignal *
-glus2_lssignal_copy (gpointer data)
+gls2_lssignal_copy (gpointer data)
 {
     LSSignal *lssig;
     LSSignal *deep_copy;
@@ -140,7 +140,7 @@ glus2_lssignal_copy (gpointer data)
 }
 
 static void
-glus2_lssignal_free (gpointer data)
+gls2_lssignal_free (gpointer data)
 {
     LSSignal *lssig;
 
@@ -152,7 +152,7 @@ glus2_lssignal_free (gpointer data)
     g_free (lssig);
 }
 
-G_DEFINE_BOXED_TYPE (LSSignal, glus2_lssignal, glus2_lssignal_copy, glus2_lssignal_free)
+G_DEFINE_BOXED_TYPE (LSSignal, gls2_lssignal, gls2_lssignal_copy, gls2_lssignal_free)
 
 
 /* --- LSProperty --- */
@@ -162,7 +162,7 @@ G_DEFINE_BOXED_TYPE (LSSignal, glus2_lssignal, glus2_lssignal_copy, glus2_lssign
  * @return A pointer to deep-copied LSProperty or NULL on failure.
  */
 static LSProperty *
-glus2_lsproperty_copy (gpointer data)
+gls2_lsproperty_copy (gpointer data)
 {
     LSProperty *lsprop;
     LSProperty *deep_copy;
@@ -184,7 +184,7 @@ glus2_lsproperty_copy (gpointer data)
 }
 
 static void
-glus2_lsproperty_free (gpointer data)
+gls2_lsproperty_free (gpointer data)
 {
     LSProperty *lsprop;
 
@@ -197,4 +197,4 @@ glus2_lsproperty_free (gpointer data)
     g_free (lsprop);
 }
 
-G_DEFINE_BOXED_TYPE (LSProperty, glus2_lsproperty, glus2_lsproperty_copy, glus2_lsproperty_free)
+G_DEFINE_BOXED_TYPE (LSProperty, gls2_lsproperty, gls2_lsproperty_copy, gls2_lsproperty_free)
