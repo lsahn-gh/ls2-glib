@@ -14,8 +14,7 @@
  * limitations under the License.
  */
 
-#include "gls2-log.h"
-#include "gls2-macros.h"
+#include <gls2/gls2.h>
 
 PmLogContext
 gls2_pmlog_get_context (void)
