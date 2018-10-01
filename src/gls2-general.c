@@ -127,7 +127,7 @@ gls2_category_set_data (Gls2Handle      *self,
 gboolean
 gls2_method_set_data (Gls2Handle       *self,
                       const gchar      *category,
-                      const gchar      *method,
+                      const gchar      *method G_GNUC_UNUSED,
                       gpointer         user_data)
 {
     Gls2HandlePrivate *priv;
