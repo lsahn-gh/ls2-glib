@@ -66,8 +66,6 @@ gboolean
 gls2_message_reply_err_bad_json (Gls2Handle    *self,
                                  LSMessage     *msg)
 {
-    gboolean ret;
-
     const gchar *reply = " \
         {                                           \
             \"returnValue\": false,                 \
@@ -81,8 +79,6 @@ gboolean
 gls2_message_reply_err_invalid_params (Gls2Handle      *self,
                                        LSMessage       *msg)
 {
-    gboolean ret;
-
     const gchar *reply = " \
         {                                             \
             \"returnValue\": false,                   \
