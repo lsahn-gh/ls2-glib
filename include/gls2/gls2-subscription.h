@@ -30,7 +30,7 @@ G_BEGIN_DECLS
 
 gboolean gls2_subscription_add_default (Gls2Handle     *self,
                                         LSMessage      *msg,
-                                        gboolean       *ret_subscribed);
+                                        bool           *ret_subscribed);
 
 gboolean gls2_subscription_set_cancel_callback (Gls2Handle      *self,
                                                 LSFilterFunc    callback,
@@ -60,7 +60,7 @@ guint gls2_subscription_get_subscribers_count (Gls2Handle  *self,
 static inline gboolean
 gls2_subscription_process (Gls2Handle     *self,
                            LSMessage      *msg,
-                           gboolean       *ret_subscribed)
+                           bool           *ret_subscribed)
 {
     return gls2_subscription_add_default (self, msg, ret_subscribed);
 }

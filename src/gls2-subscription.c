@@ -19,7 +19,7 @@
 gboolean
 gls2_subscription_add_default (Gls2Handle      *self,
                                LSMessage       *msg,
-                               gboolean        *ret_subscribed)
+                               bool            *ret_subscribed)
 {
     Gls2HandlePrivate *priv;
     gboolean ret;
