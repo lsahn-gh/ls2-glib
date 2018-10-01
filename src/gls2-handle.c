@@ -16,41 +16,13 @@
 
 #include <gls2/gls2.h>
 
-#define     GLS2_SMALL_PADDING     2
-#define     GLS2_PADDING           8
-
-struct _Gls2Handle
-{
-    /* Private */
-    GObject     parent;
-
-    Gls2HandlePrivate *priv;
-};
-
-struct _Gls2HandleClass
-{
-    GObjectClass parent_class;
-
-    /* Private */
-    gpointer _reserved[GLS2_PADDING];
-};
-
-struct _Gls2HandlePrivate
-{
-    LSHandle        *handler;
-    LSError         *lserror;
-
-    gchar       *service_name;
-    gchar       *app_id;
-};
-
 G_DEFINE_TYPE_WITH_PRIVATE (Gls2Handle, gls2_handle, G_TYPE_OBJECT)
 
 enum
 {
     PROP_0,
-    PROP_SERVICE_NAME;
-    PROP_APP_ID;
+    PROP_SERVICE_NAME,
+    PROP_APP_ID,
     LAST_PROP
 };
 
@@ -75,7 +47,7 @@ gls2_handle_dispose (GObject *parent)
 static void
 gls2_handle_finalize (GObject *parent)
 {
-    Gls2HandlePrivate *priv = GLS2_HANDLE (object)->priv;
+    Gls2HandlePrivate *priv = GLS2_HANDLE (parent)->priv;
     bool ret;
 
     /* Free if lserror was set somewhere */
@@ -172,7 +144,6 @@ gls2_handle_class_init (Gls2HandleClass *klass)
                              "The app name that will be registered",
                              NULL,
                              G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE));
-    )
 
     /* Install gobject signals */
 }
