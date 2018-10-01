@@ -24,7 +24,7 @@ gls2_g_main_get_context (Gls2Handle   *self)
 
     gls2_ret_null_if_fail_autodef (self, priv);
 
-    if ( (ctx = LSGmainGetContext (priv->handler, priv-lserror)) == NULL )
+    if ( (ctx = LSGmainGetContext (priv->handler, priv->lserror)) == NULL )
         gls2_err_log_if_set (priv->lserror);
 
     return ctx;
