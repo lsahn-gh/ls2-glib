@@ -22,16 +22,16 @@
 #include <glib.h>
 #include <luna-service2/lunaservice.h>
 
-#include "gls2-boxed-types.h"
-#include "gls2-call.h"
-#include "gls2-general.h"
-#include "gls2-handle.h"
-#include "gls2-log.h"
-#include "gls2-macros.h"
-#include "gls2-mainloop.h"
-#include "gls2-message.h"
-#include "gls2-signal.h"
-#include "gls2-subscription.h"
+#include <gls2/gls2-log.h>
+#include <gls2/gls2-macros.h>
+/*#include <gls2/gls2-boxed-types.h>*/
+#include <gls2/gls2-call.h>
+#include <gls2/gls2-general.h>
+#include <gls2/gls2-handle.h>
+#include <gls2/gls2-mainloop.h>
+#include <gls2/gls2-message.h>
+#include <gls2/gls2-signal.h>
+#include <gls2/gls2-subscription.h>
 
 #undef __GLS2_HEADER_INCLUDE__
 
