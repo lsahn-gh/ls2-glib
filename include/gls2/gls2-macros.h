@@ -39,8 +39,8 @@ G_BEGIN_DECLS
 #define     gls2_ret_val_if_fail_autodef(_self, _privptr, _val) \
                 do { \
                     g_return_val_if_fail (GLS2_IS_HANDLE (_self), _val); \
-                    _privptr = _self->priv; \
-                    g_return_val_if_fail (_self->handler != NULL, _val); \
+                    _privptr = (_self)->priv; \
+                    g_return_val_if_fail ((_privptr)->handler != NULL, _val); \
                 } while(FALSE)
 
 #define     gls2_ret_false_if_fail_autodef(_self, _privptr) \
