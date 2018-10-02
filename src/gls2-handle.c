@@ -22,7 +22,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (Gls2Handle, gls2_handle, G_TYPE_OBJECT)
 enum
 {
     PROP_0,
-    PROP_SERVICE_NAME,
+    PROP_SERVICE_NAME = 1,
     PROP_APP_ID,
     LAST_PROP
 };
