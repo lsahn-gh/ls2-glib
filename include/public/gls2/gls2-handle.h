@@ -27,37 +27,9 @@
 
 G_BEGIN_DECLS
 
-#define     GLS2_SMALL_PADDING     2
-#define     GLS2_PADDING           8
-
 typedef struct _Gls2Handle             Gls2Handle;
 typedef struct _Gls2HandleClass        Gls2HandleClass;
 typedef struct _Gls2HandlePrivate      Gls2HandlePrivate;
-
-struct _Gls2Handle
-{
-    /* Private */
-    GObject     parent;
-
-    Gls2HandlePrivate *priv;
-};
-
-struct _Gls2HandleClass
-{
-    GObjectClass parent_class;
-
-    /* Private */
-    gpointer _reserved[GLS2_PADDING];
-};
-
-struct _Gls2HandlePrivate
-{
-    LSHandle        *handler;
-    LSError         *lserror;
-
-    gchar       *service_name;
-    gchar       *app_id;
-};
 
 G_DEFINE_AUTOPTR_CLEANUP_FUNC (Gls2Handle, g_object_unref)
 
