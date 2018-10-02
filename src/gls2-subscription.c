@@ -15,6 +15,7 @@
  */
 
 #include <gls2/gls2.h>
+#include <gls2/gls2-handle-priv.h>
 
 gboolean
 gls2_subscription_add_default (Gls2Handle      *self,

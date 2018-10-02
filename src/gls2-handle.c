@@ -15,6 +15,7 @@
  */
 
 #include <gls2/gls2.h>
+#include <gls2/gls2-handle-priv.h>
 
 G_DEFINE_TYPE_WITH_PRIVATE (Gls2Handle, gls2_handle, G_TYPE_OBJECT)
 

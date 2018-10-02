@@ -15,6 +15,7 @@
  */
 
 #include <gls2/gls2.h>
+#include <gls2/gls2-handle-priv.h>
 
 gboolean
 gls2_signal_send (Gls2Handle       *self,

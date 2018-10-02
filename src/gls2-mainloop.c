@@ -15,6 +15,7 @@
  */
 
 #include <gls2/gls2.h>
+#include <gls2/gls2-handle-priv.h>
 
 GMainContext *
 gls2_g_main_get_context (Gls2Handle   *self)
