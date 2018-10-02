@@ -253,14 +253,7 @@ gls2_handle_get_service_name (Gls2Handle *self)
 gchar *
 gls2_handle_dup_service_name (Gls2Handle *self)
 {
-    Gls2HandlePrivate *priv;
-
-    gls2_ret_null_if_fail (GLS2_IS_HANDLE (self));
-
-    priv = self->priv;
-    gls2_ret_null_if_fail (priv->service_name != NULL);
-
-    return g_strdup (priv->service_name);
+    return g_strdup (gls2_handle_get_service_name (self));
 }
 
 static inline gboolean
