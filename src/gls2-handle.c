@@ -280,9 +280,5 @@ gls2_handle_get_app_id (Gls2Handle *self)
 gchar *
 gls2_handle_dup_app_id (Gls2Handle *self)
 {
-    const gchar *app_id;
-
-    app_id = gls2_handle_get_app_id (self);
-
-    return app_id ? g_strdup (app_id) : NULL;
+    return g_strdup (gls2_handle_get_app_id (self));
 }
