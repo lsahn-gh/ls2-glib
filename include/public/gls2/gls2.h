@@ -19,9 +19,6 @@
 
 #define __GLS2_HEADER_INCLUDE__
 
-#include <glib.h>
-#include <luna-service2/lunaservice.h>
-
 #include <gls2/gls2-log.h>
 #include <gls2/gls2-macros.h>
 /*#include <gls2/gls2-boxed-types.h>*/
