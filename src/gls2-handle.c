@@ -118,6 +118,26 @@ gls2_handle_set_property (GObject      *object,
 }
 
 static void
+gls2_handle_constructed (GObject *parent)
+{
+    Gls2HandlePrivate *priv = GLS2_HANDLE (parent)->priv;
+    LSError *error;
+
+    G_OBJECT_CLASS (gls2_handle_parent_class)->constructed (parent);
+
+    /* Initialize LSError */
+    if ( (error = g_try_new (LSError, 1)) != NULL ) {
+        LSErrorInit (error);
+        priv->lserror = error;
+    }
+
+    /* Register LSHandle */
+    if ( !LSRegister(priv->service_name, &priv->handler, error) ) {
+        gls2_err_log_if_set (error);
+    }
+}
+
+static void
 gls2_handle_class_init (Gls2HandleClass *klass)
 {
     GObjectClass *object_klass = G_OBJECT_CLASS (klass);
@@ -126,6 +146,7 @@ gls2_handle_class_init (Gls2HandleClass *klass)
     object_klass->finalize = gls2_handle_finalize;
     object_klass->get_property = gls2_handle_get_property;
     object_klass->set_property = gls2_handle_set_property;
+    object_klass->constructed = gls2_handle_constructed;
 
     /* Install gobject properties */
     g_object_class_install_property (
@@ -153,21 +174,8 @@ static void
 gls2_handle_init (Gls2Handle *self)
 {
     Gls2HandlePrivate *priv = gls2_handle_get_instance_private (self);
-    LSError *error;
 
-    /* Initialize private fields */
     self->priv = priv;
-
-    /* Initialize LSError */
-    if ( (error = g_try_new (LSError, 1)) != NULL ) {
-        LSErrorInit (error);
-        priv->lserror = error;
-    }
-
-    /* Register LSHandle */
-    if ( !LSRegister(priv->service_name, &priv->handler, error) ) {
-        gls2_err_log_if_set (error);
-    }
 }
 
 Gls2Handle *
