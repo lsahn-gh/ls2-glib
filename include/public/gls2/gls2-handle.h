@@ -30,23 +30,25 @@ G_BEGIN_DECLS
 #define     GLS2_SMALL_PADDING     2
 #define     GLS2_PADDING           8
 
+typedef struct _Gls2Handle             Gls2Handle;
+typedef struct _Gls2HandleClass        Gls2HandleClass;
 typedef struct _Gls2HandlePrivate      Gls2HandlePrivate;
 
-typedef struct _Gls2Handle
+struct _Gls2Handle
 {
     /* Private */
     GObject     parent;
 
     Gls2HandlePrivate *priv;
-} Gls2Handle;
+};
 
-typedef struct _Gls2HandleClass
+struct _Gls2HandleClass
 {
     GObjectClass parent_class;
 
     /* Private */
     gpointer _reserved[GLS2_PADDING];
-} Gls2HandleClass;
+};
 
 struct _Gls2HandlePrivate
 {
