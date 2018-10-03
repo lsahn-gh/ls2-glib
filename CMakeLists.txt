@@ -17,7 +17,7 @@ project(libgls2 C)
 
 include(webOS/webOS)
 webos_modules_init(1 0 0)
-webos_component(3 21 2)
+webos_component(0 1 0)
 
 include(FindPkgConfig)
 
@@ -71,12 +71,18 @@ webos_add_linker_options(ALL ${LIBS_LDFLAGS})
 
 webos_build_pkgconfig(files/pkgconfig/${CMAKE_PROJECT_NAME})
 
+# Examples
 if(GLS2_BUILD_EXAMPLES)
     add_subdirectory(example)
 else()
     message(STATUS "libgls2: skip building examples")
 endif()
 
-webos_build_library(NAME ${PROJECT_NAME})
+# Documentation
+if(GLS2_DOCS)
+    webos_config_build_doxygen(doc Doxyfile)
+else()
+    message(STATUS "libgls2: skip building documentation")
+endif()
 
-# webos_config_build_doxygen(doc Doxyfile)
+webos_build_library(NAME ${PROJECT_NAME})
