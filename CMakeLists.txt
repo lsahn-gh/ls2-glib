@@ -31,24 +31,22 @@ webos_add_compiler_flags(ALL
                         -Wall -Werror -Wextra)
                         
 pkg_check_modules(GLIB2 REQUIRED glib-2.0)
-include_directories(${GLIB2_INCLUDE_DIRS})
-link_directories(${GLIB2_LIBRARY_DIRS})
-webos_add_compiler_flags(ALL ${GLIB2_CFLAGS_OTHER})
-
 pkg_check_modules(GOBJECT2 REQUIRED gobject-2.0)
-include_directories(${GOBJECT2_INCLUDE_DIRS})
-link_directories(${GOBJECT2_LIBRARY_DIRS})
-webos_add_compiler_flags(ALL ${GOBJECT2_CFLAGS_OTHER})
-
 pkg_check_modules(LUNASERVICE2 REQUIRED luna-service2)
-include_directories(${LUNASERVICE2_INCLUDE_DIRS})
-link_directories(${LUNASERVICE2_LIBRARY_DIRS})
-webos_add_compiler_flags(ALL ${LUNASERVICE2_CFLAGS_OTHER})
-
 pkg_check_modules(PMLOGLIB REQUIRED PmLogLib)
-include_directories(${PMLOGLIB_INCLUDE_DIRS})
-link_directories(${PMLOGLIB_LIBRARY_DIRS})
-webos_add_compiler_flags(ALL ${PMLOGLIB_CFLAGS_OTHER})
+
+include_directories(${GLIB2_INCLUDE_DIRS}
+                    ${LUNASERVICE2_INCLUDE_DIRS}
+                    ${PMLOGLIB_INCLUDE_DIRS})
+
+link_directories(${GLIB2_LIBRARY_DIRS}
+                 ${GOBJECT2_LIBRARY_DIRS}
+                 ${LUNASERVICE2_LIBRARY_DIRS}
+                 ${PMLOGLIB_LIBRARY_DIRS})
+
+webos_add_compiler_flags(ALL ${GLIB2_CFLAGS_OTHER}
+                             ${LUNASERVICE2_CFLAGS_OTHER}
+                             ${PMLOGLIB_CFLAGS_OTHER})
 
 SET(LIBS
     ${GLIB2_LIBRARIES}
