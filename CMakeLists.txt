@@ -75,15 +75,8 @@ webos_add_linker_options(ALL ${LIBS_LDFLAGS})
 
 webos_build_pkgconfig(files/pkgconfig/${CMAKE_PROJECT_NAME})
 
-# Examples
-if(GLS2_BUILD_EXAMPLES)
-    add_subdirectory(example)
-else()
-    message(STATUS "libgls2: skip building examples")
-endif()
-
 # Documentation
-if(GLS2_DOCS)
+if(GLS2_BUILD_DOC)
     webos_config_build_doxygen(doc Doxyfile)
 else()
     message(STATUS "libgls2: skip building documentation")
