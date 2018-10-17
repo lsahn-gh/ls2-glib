@@ -45,17 +45,17 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC (Gls2Handle, g_object_unref)
 #define GLS2_HANDLE_GET_CLASS(obj)      (G_TYPE_INSTANCE_GET_CLASS(obj, \
                                          GLS2_TYPE_HANDLE, Gls2HandleClass))
 
-GType               gls2_handle_get_type            (void);
+GType               gls2_handle_get_type                    (void);
 
-Gls2Handle *        gls2_handle_new                 (const gchar    *service_name);
-Gls2Handle *        gls2_handle_new_with_app_id     (const gchar    *service_name,
-                                                     const gchar    *app_id);
+Gls2Handle *        gls2_handle_new                         (const gchar    *service_name);
+Gls2Handle *        gls2_handle_new_with_application_id     (const gchar    *service_name,
+                                                             const gchar    *application_id);
 
-const LSHandle *    gls2_handle_get_lshandle        (Gls2Handle    *self);
-const gchar *       gls2_handle_get_service_name    (Gls2Handle    *self);
-gchar *             gls2_handle_dup_service_name    (Gls2Handle    *self);
-const gchar *       gls2_handle_get_app_id          (Gls2Handle    *self);
-gchar *             gls2_handle_dup_app_id          (Gls2Handle    *self);
+const LSHandle *    gls2_handle_get_lshandle                (Gls2Handle    *self);
+const gchar *       gls2_handle_get_service_name            (Gls2Handle    *self);
+gchar *             gls2_handle_dup_service_name            (Gls2Handle    *self);
+const gchar *       gls2_handle_get_application_id          (Gls2Handle    *self);
+gchar *             gls2_handle_dup_application_id          (Gls2Handle    *self);
 
 G_END_DECLS
 

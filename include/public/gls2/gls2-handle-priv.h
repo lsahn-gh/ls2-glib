@@ -51,7 +51,7 @@ struct _Gls2HandlePrivate
     LSError         *lserror;
 
     gchar       *service_name;
-    gchar       *app_id;
+    gchar       *application_id;
 };
 
 G_END_DECLS

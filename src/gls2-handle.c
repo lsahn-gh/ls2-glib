@@ -23,7 +23,7 @@ enum
 {
     PROP_0,
     PROP_SERVICE_NAME = 1,
-    PROP_APP_ID,
+    PROP_APPLICATION_ID,
     LAST_PROP
 };
 
@@ -64,7 +64,7 @@ gls2_handle_finalize (GObject *parent)
     priv->lserror = NULL;
 
     g_free (priv->service_name);
-    g_free (priv->app_id);
+    g_free (priv->application_id);
 
     G_OBJECT_CLASS (gls2_handle_parent_class)->finalize (parent);
 }
@@ -83,8 +83,8 @@ gls2_handle_get_property (GObject      *object,
             g_value_set_string (value, priv->service_name);
             break;
 
-        case PROP_APP_ID:
-            g_value_set_string (value, priv->app_id);
+        case PROP_APPLICATION_ID:
+            g_value_set_string (value, priv->application_id);
             break;
 
         default:
@@ -107,9 +107,9 @@ gls2_handle_set_property (GObject      *object,
             priv->service_name = g_value_dup_string (value);
             break;
 
-        case PROP_APP_ID:
-            g_free (priv->app_id);
-            priv->app_id = g_value_dup_string (value);
+        case PROP_APPLICATION_ID:
+            g_free (priv->application_id);
+            priv->application_id = g_value_dup_string (value);
             break;
 
         default:
@@ -160,10 +160,10 @@ gls2_handle_class_init (Gls2HandleClass *klass)
 
     g_object_class_install_property (
         object_klass,
-        PROP_APP_ID,
-        g_param_spec_string ("app-id",
-                             "App name being registered",
-                             "The app name that will be registered",
+        PROP_APPLICATION_ID,
+        g_param_spec_string ("application-id",
+                             "Application id being registered",
+                             "The application id that will be registered",
                              NULL,
                              G_PARAM_CONSTRUCT_ONLY | G_PARAM_READWRITE));
 
@@ -183,17 +183,17 @@ gls2_handle_new (const gchar *service_name)
 {
     return GLS2_HANDLE (g_object_new (GLS2_TYPE_HANDLE,
                                       "service-name", service_name,
-                                      "app-id", NULL,
+                                      "application-id", NULL,
                                       NULL));
 }
 
 Gls2Handle *
-gls2_handle_new_with_app_id (const gchar *service_name,
-                             const gchar *app_id)
+gls2_handle_new_with_application_id (const gchar *service_name,
+                                     const gchar *application_id)
 {
     return GLS2_HANDLE (g_object_new (GLS2_TYPE_HANDLE,
                                       "service-name", service_name,
-                                      "app-id", app_id,
+                                      "application-id", application_id,
                                       NULL));
 }
 
@@ -257,28 +257,28 @@ gls2_handle_dup_service_name (Gls2Handle *self)
 }
 
 static inline gboolean
-gls2_handle_app_id_is_set (Gls2Handle *self)
+gls2_handle_application_id_is_set (Gls2Handle *self)
 {
-    return ( self->priv->app_id ? TRUE : FALSE );
+    return ( self->priv->application_id ? TRUE : FALSE );
 }
 
 const gchar *
-gls2_handle_get_app_id (Gls2Handle *self)
+gls2_handle_get_application_id (Gls2Handle *self)
 {
     Gls2HandlePrivate *priv;
 
     gls2_ret_null_if_fail (GLS2_IS_HANDLE (self));
 
-    if ( !gls2_handle_app_id_is_set (self) )
+    if ( !gls2_handle_application_id_is_set (self) )
         return NULL;
 
     priv = self->priv;
 
-    return priv->app_id;
+    return priv->application_id;
 }
 
 gchar *
-gls2_handle_dup_app_id (Gls2Handle *self)
+gls2_handle_dup_application_id (Gls2Handle *self)
 {
-    return g_strdup (gls2_handle_get_app_id (self));
+    return g_strdup (gls2_handle_get_application_id (self));
 }
