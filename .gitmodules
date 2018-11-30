@@ -1,0 +1,3 @@
+[submodule "subprojects/luna-service2"]
+	path = subprojects/luna-service2
+	url = https://github.com/webosose/luna-service2
